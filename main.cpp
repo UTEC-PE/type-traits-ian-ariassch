@@ -3,10 +3,6 @@
 #include "slist.h"
 #include "dlist.h"
 
-using namespace std;
-
-void testSimpleLinkedList();
-void testDoubleLinkedList();
 
 template <typename T>
 struct Greater {
@@ -23,67 +19,22 @@ struct Less {
 };
 
 struct Integer {
-       typedef int T;
-       typedef Less<T> Operation;
+    typedef int T;
+    typedef Less<T> Operation;
 };
 
 struct Float {
-       typedef float T;
-       typedef Greater<T> Operation;
+    typedef float T;
+    typedef Greater<T> Operation;
 };
 
-int main(int argc, char const *argv[]) {
-    testSimpleLinkedList();
-    testDoubleLinkedList();
+using namespace std;
 
-    cin.get();
-    return EXIT_SUCCESS;
-}
-
-void testSimpleLinkedList() {
-    cout << "Simple Linked List" << endl;
-
-    SList<Integer> integers;
-    SList<Float> floats;
-
-    SList<Integer>::iterator ite1;
-    SList<Float>::iterator ite2;
-    
-    for (int i = 0; i < 5; i++) {
-        integers.insert(2 * i + 1);
-        floats.insert(20.f / (i + 1.f) + 2.f);
-    }
-
-    integers.remove(5);
-    floats.remove(7);
-    
-    for (ite1 = integers.begin(); ite1 != integers.end(); ++ite1) {
-        cout << *ite1 << " ";
-    }
-    cout << endl;
-
-    for (ite2 = floats.begin(); ite2 != floats.end(); ++ite2) {
-        cout << *ite2 << " ";
-    }
-    cout << endl << endl;
-}
-
-void testDoubleLinkedList() {
-    cout << "Double Linked List" << endl;
-
-    DList<Integer> integers;
-    DList<Integer>::iterator ite;
-    
-    for (int i = 0; i < 5; i++) {
-        integers.push_front(2 * i + 1);
-    }
-    
-    ite = integers.begin();
-    ++ite;
-    cout << *ite << " ";
-    ++ite;
-    cout << *ite << " ";
-    --ite;
-    cout << *ite << " ";
-    cout << endl << endl;
+int main(){
+    DList<Integer> listadoble;
+    listadoble.push_front(6);
+    listadoble.push_front(8);
+    listadoble.push_back(12);
+    listadoble.pop_front();
+    listadoble.print();
 }

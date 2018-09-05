@@ -3,6 +3,8 @@
 
 #include "iterator.h"
 
+using namespace std;
+
 template <typename T>
 class DListIterator : public Iterator<T> {     
     public: 
@@ -21,22 +23,53 @@ class DList {
     private:
         Node<T>* head;
         Node<T>* tail;
-              
+        int nodes;
     public:
         DList() {
             head = tail = nullptr;
+            nodes = 0;
         };
 
         void push_front(T data) {
-            // TODO
+            Node<T> *temp = new Node<T>(data);
+            if(nodes == 0)head = tail = temp;
+            else{
+                head->prev=temp;
+                temp->next=head;
+                head = temp;
+            }
+            nodes++;
+        }
+
+        void print(){
+            auto *temp = head;
+            for (int i = 0; i < nodes; ++i) {
+                cout << temp -> data << " ";
+                temp = temp -> next;
+            }
         }
 
         void push_back(T data) {
-            // TODO
+            Node<T> *temp = new Node<T>(data);
+            if(nodes == 0)head = tail = temp;
+            else{
+                tail->next=temp;
+                temp->prev=tail;
+                tail = temp;
+            }
+            nodes++;
         }
              
         void pop_front() {
-            // TODO
+            auto *temp = head;
+            if(nodes == 0){throw "Error";}
+            else {
+                head->next->prev=NULL;
+                head=head->next;
+                delete temp;
+                }
+            nodes--;
+
         }
              
         void pop_back() {
