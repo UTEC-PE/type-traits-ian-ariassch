@@ -73,7 +73,13 @@ class DList {
         }
              
         void pop_back() {
-            // TODO
+            auto *temp = tail;
+            if(nodes == 0){throw "Error";}
+            else {
+                tail->prev->next=NULL;
+                tail=tail->prev;
+            }
+            nodes--;
         }
              
         iterator begin() {
