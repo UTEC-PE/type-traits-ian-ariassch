@@ -3,6 +3,7 @@
 
 #include "iterator.h"
 
+using namespace std;
 template <class T>
 class SListIterator : public Iterator<T> {     
     public: 
@@ -54,7 +55,19 @@ class SList {
         }
              
         bool insert(T data) {
-            // TODO
+            Node<T> **pointer;
+            if(find(data, pointer))
+            {
+                return false;
+            }
+            else
+            {
+                auto *node = new Node<T>(data);
+                auto *temp = *pointer;
+                (*pointer) = node;
+                node = temp;
+                return true;
+            }
         }
              
         bool remove(T item) {
