@@ -23,13 +23,13 @@ struct Less {
 };
 
 struct Integer {
-       typedef int T;
-       typedef Less<T> Operation;
+    typedef int T;
+    typedef Less<T> Operation;
 };
 
 struct Float {
-       typedef float T;
-       typedef Greater<T> Operation;
+    typedef float T;
+    typedef Greater<T> Operation;
 };
 
 int main(int argc, char const *argv[]) {
@@ -48,7 +48,7 @@ void testSimpleLinkedList() {
 
     SList<Integer>::iterator ite1;
     SList<Float>::iterator ite2;
-    
+
     for (int i = 0; i < 5; i++) {
         integers.insert(2 * i + 1);
         floats.insert(20.f / (i + 1.f) + 2.f);
@@ -56,7 +56,7 @@ void testSimpleLinkedList() {
 
     integers.remove(5);
     floats.remove(7);
-    
+
     for (ite1 = integers.begin(); ite1 != integers.end(); ++ite1) {
         cout << *ite1 << " ";
     }
@@ -73,11 +73,11 @@ void testDoubleLinkedList() {
 
     DList<Integer> integers;
     DList<Integer>::iterator ite;
-    
+
     for (int i = 0; i < 5; i++) {
         integers.push_front(2 * i + 1);
     }
-    
+
     ite = integers.begin();
     ++ite;
     cout << *ite << " ";
