@@ -10,8 +10,14 @@ class DListIterator : public Iterator<T> {
     public: 
         DListIterator() : Iterator<T>() {};
         DListIterator(Node<T> *current) : Iterator<T>(current) {};
-        DListIterator<T> operator++();
-        DListIterator<T> operator--();
+        DListIterator<T> operator++(){
+            this->current = this->current->next;
+            return *this;
+        }
+        DListIterator<T> operator--(){
+            this->current = this->current->prev;
+            return *this;
+        };
 };
 
 template <typename Tr>
@@ -81,13 +87,13 @@ class DList {
             }
             nodes--;
         }
-             
+
         iterator begin() {
-            // TODO
+            return iterator(head);
         }
              
         iterator end() {
-            // TODO
+            return iterator(tail);
         }
              
         ~DList() {
