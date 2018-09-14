@@ -10,7 +10,7 @@ class SListIterator : public Iterator<T> {
         SListIterator() : Iterator<T>() {};
         SListIterator(Node<T> *current) : Iterator<T>(current) {};
         SListIterator<T> operator++(){
-            this->current = this->current->next;
+            this->current = this->current->next; // Falta retornar el iterador, esto da warning
         };
 };
 
